@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  dhcpd:
+    restart: unless-stopped
+    build:
+      target: dhcpd
+  ap:
+    restart: unless-stopped
+    build:
+      target: ap
+    network_mode: host
+    privileged: true
+  dns:
+    restart: unless-stopped
+    build:
+      target: dns
+    volumes:
+    - "./bind/named.conf:/etc/bind/named.conf"
+    - "./bind/named.conf.logging:/etc/bind/named.conf.logging"
+    - "./bind/named.conf.options:/etc/bind/named.conf.options"
+

@@ -1,0 +1,30 @@
+options {
+	directory "/var/cache/bind";
+	
+	auth-nxdomain no;
+	dnssec-validation yes;
+	dnssec-enable yes;
+	edns-udp-size 512;
+	
+	listen-on { 
+		any;
+	};
+	listen-on-v6 {
+		any;
+	};
+	allow-query {
+		127/8;
+	};
+	allow-recursion {
+		10/8;
+		172.16/12;
+		192.168/16;
+		169.254/16;
+	};
+	allow-transfer {
+		none;
+	};
+	allow-update {
+		none;
+	};
+};

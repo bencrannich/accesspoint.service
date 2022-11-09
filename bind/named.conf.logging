@@ -1,0 +1,31 @@
+logging {
+    channel default_stderr {
+        print-time yes;
+        print-category yes;
+        print-severity yes;
+        severity dynamic;
+        stderr;
+    };
+    
+    category default { default_stderr; };
+    category config { default_stderr; };
+    category dispatch { default_stderr; };
+    category network { default_stderr; };
+    category general { default_stderr; };
+    category zoneload { default_stderr; };
+    category resolver { null; };
+    category cname { null; };
+    category delegation-only { null; };
+    category lame-servers { null; };
+    category edns-disabled { null; };
+    category client { null; };
+    category security { null; };
+    category rate-limit { default_stderr; };
+    category spill { default_stderr; };
+    category database { default_stderr; };
+    category rpz { default_stderr; };
+    category dnstap { default_stderr; };
+    category trust-anchor-telemetry { default_stderr; };
+    category queries { null; };
+    category query-errors { null; };
+};

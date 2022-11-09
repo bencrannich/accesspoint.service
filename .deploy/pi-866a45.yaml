@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  dhcpd:
+    command: /usr/sbin/dhcpd -4 -f -d -cf /etc/dhcp/dhcpd.conf br0
+    network_mode: host
+    volumes:
+    - "/services/secrets/inst/current/pi-866a45/dhcpd.conf:/etc/dhcp/dhcpd.conf"
+    - "/fs/d1/services/dhcp:/var/lib/dhcp"
+  ap:
+    volumes:
+    - "/services/secrets/inst/current/pi-866a45/hostapd.conf:/etc/hostapd/hostapd.conf"
+  dns:
+    volumes:
+    - "/services/secrets/inst/current/pi-866a45/named.conf.local:/etc/bind/named.conf.local"
+    - "/services/secrets/inst/current/pi-866a45/named.conf.options:/etc/bind/named.conf.options"
+    ports:
+      - "192.168.100.3:53:53/udp"
+      - "192.168.100.3:53:53/tcp"
+      - "127.0.0.1:53:53/udp"
+      - "127.0.0.1:53:53/tcp"
